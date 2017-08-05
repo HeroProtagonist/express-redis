@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon -r dotenv/config index"
+    "start": "npm run clear && nodemon -r dotenv/config index",
+    "start:noCache": "NO_CACHE=true nodemon -r dotenv/config index",
+    "clear": "node redis/clear-cache"
   },
   "dependencies": {
     "cache-manager": "^2.4.0",
@@ -17,6 +19,7 @@
     "redis-cache": "^0.2.1"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "redis-url": "^1.2.1"
   }
 }
