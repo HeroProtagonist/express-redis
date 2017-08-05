@@ -11,15 +11,7 @@ export const redisCache = cacheManager.caching({
   retry_strategy: retryStrategy,
 })
 
-module.exports = function () {
-  let cache = memoryCache
-
-  if (process.env.NODE_ENV !== 'test') {
-    cache = redisCache
-  }
-
-  return cache
-}
+module.exports = () => redisCache
 
 function retryStrategy (options) {
   console.log('ATTEMPT: ', options.attempt)
