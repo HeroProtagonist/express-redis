@@ -8,12 +8,14 @@ const {
 } = require('./middleware/page-caching')
 
 const { render } = require('./middleware/render')
+const { currentTime } = require('./middleware/currentTime')
 
 app.use(morgan('tiny'))
 // app.set('view engine', 'pug')
 
 app.get('*', renderIfCached)
 
+// app.use(currentTime)
 app.use(render)
 
 app.get('*', cachePage)
