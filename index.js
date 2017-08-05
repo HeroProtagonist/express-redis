@@ -10,7 +10,7 @@ const {
 const { render } = require('./middleware/render')
 
 app.use(morgan('tiny'))
-app.set('view engine', 'pug')
+// app.set('view engine', 'pug')
 
 app.get('*', renderIfCached)
 
@@ -19,7 +19,7 @@ app.use(render)
 app.get('*', cachePage)
 
 app.use((req, res) => {
-  res.render(res.html)
+  res.send(res.html)
 })
 // app.get('/', (req, res) => {})
 
