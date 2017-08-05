@@ -6,7 +6,9 @@
   "scripts": {
     "start": "npm run clear && nodemon -r dotenv/config index",
     "start:noCache": "npm run clear && NO_CACHE=true nodemon -r dotenv/config index",
-    "clear": "node redis/clear-cache"
+    "cache:clear": "node redis/clear-cache",
+    "redis:start": "brew services start redis",
+    "redis:stop": "brew services stop redis"
   },
   "dependencies": {
     "cache-manager": "^2.4.0",

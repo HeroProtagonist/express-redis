@@ -15,7 +15,7 @@ app.use(morgan('tiny'))
 
 app.get('*', renderIfCached)
 
-// app.use(currentTime)
+app.use(currentTime)
 app.use(render)
 
 app.get('*', cachePage)
