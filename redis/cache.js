@@ -3,7 +3,7 @@ const redisStore = require('cache-manager-redis')
 
 const timeToLive = 20 * 60 // 20min in seconds
 
-export const redisCache = cacheManager.caching({
+const redisCache = cacheManager.caching({
   store: redisStore,
   url: '',
   ttl: timeToLive,
