@@ -6,6 +6,8 @@ const cache = Cache()
 
 module.exports = {
   cachePage: (req, res, next) => {
+    if (process.env.NO_CACHE) return next()
+
     try {
       const cacheKey = req.originalUrl
       log(`caching page for key: ${cacheKey}`)
@@ -20,6 +22,7 @@ module.exports = {
   },
 
   renderIfCached: (req, res, next) => {
+    if (process.env.NO_CACHE) return next()
 
     const cacheKey = req.originalUrl
     log(`checking page cache for key: ${cacheKey}`)
