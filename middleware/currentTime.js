@@ -5,18 +5,22 @@ const log = Debug('currentTime')
 const cache = Cache()
 
 function currentTime (req, res, next) {
-  log(`attempting to get current time from cache`)
-  return cache.wrap('current-time', () => {
+  return Promise.all([currentTimeCalc(1, res), currentTimeCalc(2, res)])
+  .then(() => next())
+  .catch(e => next(e))
+}
+
+function currentTimeCalc (num, res) {
+  log(`attempting to get current time from cache`, num)
+  return cache.wrap(`current-time-${num}`, () => {
       return calculateCurrentTime()
     })
     .then(currentTime => {
-      res.currentTime =  currentTime
-      next()
+      res[`currentTime${num}`] =  currentTime
     })
     .catch(e => {
       log('current time cache error: ', e)
-      res.currentTime = calculateCurrentTime()
-      next()
+      res[`currentTime${num}`] = calculateCurrentTime()
     })
 }
 
