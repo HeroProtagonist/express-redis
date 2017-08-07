@@ -9,6 +9,8 @@ const redisCache = cacheManager.caching({
   ttl: timeToLive,
   compress: true,
   retry_strategy: retryStrategy,
+  max: 10,
+  min: 2
 })
 
 module.exports = () => redisCache
