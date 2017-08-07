@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "npm run cache:clear && nodemon -r dotenv/config index",
-    "start:noCache": "npm run cache:clear && NO_CACHE=true nodemon -r dotenv/config index",
+    "start": "npm run redis:clear && nodemon -r dotenv/config index",
+    "start:noCache": "npm run redis:clear && NO_CACHE=true nodemon -r dotenv/config index",
     "start:noClear": "nodemon -r dotenv/config index",
     "redis:clear": "node redis/clear-cache",
     "redis:start": "brew services start redis",
