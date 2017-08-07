@@ -14,11 +14,11 @@ const redisCache = cacheManager.caching({
 module.exports = () => redisCache
 
 function retryStrategy (options) {
-  console.log('ATTEMPT: ', options.attempt)
   if (options.attempt > 5) {
-    // Stop retrying afer 10 attempts.
+    // Stop retrying afer 5 attempts.
     return undefined
   }
+  console.log('Retry Attempt: ', options.attempt)
   // Increase reconnect delay by 150ms.
   return options.attempt * 150
 }

@@ -9,7 +9,6 @@ client.on('connect', () => {
   log('Deleting all data from Redis DB…')
 
   client.flushdb((err, res) => {
-    // if (err) throw err // TODO: Fix
     if (err) log(err)
 
     log(`DB flushed (${res}). Bye!`)
@@ -18,7 +17,6 @@ client.on('connect', () => {
   })
 })
 
-// client.on('Error', err => { // TODO: Fix
 client.on('error', err => {
   console.warn('Error connecting to Redis Database', err)
 })

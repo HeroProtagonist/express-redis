@@ -13,11 +13,10 @@ module.exports = {
       log(`caching page for key: ${cacheKey}`)
 
       cache.set(cacheKey, res.html, err => {
-        // err ? next(err) : next() // TODO: Fix
         next()
       })
     } catch (e) {
-      log('cach save error')
+      log('cache save error')
       console.warn(e)
       next()
     }
@@ -46,7 +45,7 @@ module.exports = {
         }
       })
     } catch (e) {
-      log('cach retrieve error')
+      log('cache retrieve error')
       console.warn(e)
       next()
     }

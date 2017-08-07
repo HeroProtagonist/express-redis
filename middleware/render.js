@@ -3,8 +3,8 @@ const path = require('path')
 
 function render (req, res, next) {
   res.html = pug.renderFile(path.join(__dirname, '..', 'views/index.pug'), {
-    timestamp: res.currentTime
-    // timestamp: `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
+    timestamp1: res.currentTime1,
+    timestamp2: res.currentTime2
   })
   next()
 }
